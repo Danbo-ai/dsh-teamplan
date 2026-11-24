@@ -1,0 +1,23 @@
+# dsh-teamplan bundle patch: mounts the team-plan plugin into the host
+# composition of a dsh profile. The plugin registers its `teamplan_*` tools
+# into the shared `tools` registry, the write gate that refuses unplanned file
+# changes, and the `/plugins/dsh-teamplan/state` route the sidebar badge polls.
+#
+# Install: `plugin_manager install_bundle target=<absolute package dir>`.
+- insert:
+    - id: teamplan
+      # Node-resolvable package name — must stay in sync with package.json
+      # `name`.
+      name: 'dsh-teamplan'
+      config:
+        # Done plans stay visible this many days before they are pruned.
+        retentionDays: 3
+        # Percent uses estimated minutes when they exist; this is the fallback
+        # weight for a step that declares none.
+        defaultStepMinutes: 10
+        # A step counts as blocked on the client after this much silence.
+        blockedAfterMinutes: 15
+        # How hard the plan-first rule is: off (advisory only), writes (refuse
+        # write tools without an approved plan), or full (also close-veto a
+        # turn that wrote without a plan).
+        enforce: full

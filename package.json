@@ -1,0 +1,53 @@
+{
+  "name": "dsh-teamplan",
+  "version": "0.1.0",
+  "description": "Team plan and progress monitoring for DeepSeek Harness: durable plans, reviewed before work starts, with minute-weighted percent progress in the sidebar",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib",
+    "client.js",
+    "cordis.patch.yml",
+    "locale",
+    "docs",
+    "icon.svg"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "plan",
+    "progress"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "author": "Danbo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danbo-ai/dsh-teamplan.git"
+  },
+  "homepage": "https://github.com/Danbo-ai/dsh-teamplan#readme",
+  "bugs": {
+    "url": "https://github.com/Danbo-ai/dsh-teamplan/issues"
+  }
+}
